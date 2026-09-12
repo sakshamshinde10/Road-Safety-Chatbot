@@ -6,6 +6,8 @@ import EmergencyModal from './components/EmergencyModal.jsx';
 import IksExplanationModal from './components/IksExplanationModal.jsx';
 import { AlertCircle, X } from 'lucide-react';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '' : 'https://road-safety-bot-server.onrender.com');
+
 export default function App() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -38,7 +40,7 @@ export default function App() {
     setErrorBanner(null);
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch(`${API_BASE_URL}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -112,7 +114,7 @@ export default function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://road-safety-bot-server.onrender.com/api/chat', {
+      const response = await fetch(`${API_BASE_URL}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ decisionFlowId, optionId })
