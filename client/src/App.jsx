@@ -49,6 +49,11 @@ export default function App() {
         })
       });
 
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Received unexpected HTML response. The backend might be waking up or unreachable. Please try again.');
+      }
+
       const data = await response.json();
 
 
@@ -119,6 +124,11 @@ export default function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ decisionFlowId, optionId })
       });
+
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Received unexpected response from server. Please try again.');
+      }
 
       const data = await response.json();
 
