@@ -30,9 +30,10 @@ export default function InputBox({ onSendMessage, isLoading }) {
           
           {/* Voice Input Button */}
           <VoiceButton
+            input={input}
+            setInput={setInput}
             onTranscript={handleVoiceTranscript}
             disabled={isLoading}
-            initialText={input}
           />
 
           {/* Textarea Input */}

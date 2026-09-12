@@ -112,7 +112,7 @@ export default function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch('https://road-safety-bot-server.onrender.com/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ decisionFlowId, optionId })
@@ -155,7 +155,7 @@ export default function App() {
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-amber-500 selection:text-slate-950">
-      
+
       {/* Top Header */}
       <Header
         onNewChat={handleNewChat}
