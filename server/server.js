@@ -12,6 +12,12 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// Normalize multiple slashes in request URLs (e.g., //api/chat -> /api/chat)
+app.use((req, res, next) => {
+  req.url = req.url.replace(/\/{2,}/g, '/');
+  next();
+});
+
 // Routes
 app.use('/api', chatRoutes);
 

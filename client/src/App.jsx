@@ -6,7 +6,8 @@ import EmergencyModal from './components/EmergencyModal.jsx';
 import IksExplanationModal from './components/IksExplanationModal.jsx';
 import { AlertCircle, X } from 'lucide-react';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '' : 'https://road-safety-chatbot.onrender.com');
+const rawApiUrl = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? '' : 'https://road-safety-chatbot.onrender.com');
+const API_BASE_URL = (rawApiUrl || '').replace(/\/+$/, '');
 
 export default function App() {
   const [messages, setMessages] = useState([]);
